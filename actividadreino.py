@@ -32,10 +32,15 @@ def ventanaprincipal():
     rad4.pack()
 
     def ventanas():
-        if var.get()==1:
+        variable=var.get()
+        if variable==1:
             ventana_2()
-        elif var.get()==2:
+        elif variable==2:
             ventana_3()
+        elif variable==3:
+            ventana_4()
+        elif variable==4:
+            ventana_5()
 
 
     boton=tk.Button(ventana,text="seleccionar",command=ventanas)
@@ -54,20 +59,26 @@ def ventana_2():
 
     ventana2=tk.Tk()
     ventana2.title("elefante")
-    ventana2.geometry("500x500")
+    ventana2.geometry("700x700")
     ventana2.config(bg="lightyellow")
 
-    etiqueta=tk.Label(ventana2,text="ELEFANTE")
-    etiqueta.pack()
+    etiqueta=tk.Label(ventana2,text="ELEFANTE",bg="gray",font=("Algerian",24,"bold"))#c
+    etiqueta.pack(pady=10)
+
+    frame=tk.Frame()#c
+    frame.pack(pady=20)#c
 
     imagen=Image.open("elefante.jpg")
     imagen=imagen.resize((400,200))
     imagen_tk=ImageTk.PhotoImage(imagen)
-    label_imagen=tk.Label(ventana2,image=imagen_tk)
-    label_imagen.pack(pady=20)
+    label_imagen=tk.Label(frame,image=imagen_tk)
+    label_imagen.grid(row=0,column=0,padx=5,pady=5)#c
+    #label_imagen.pack(pady=20)
 
-    etiqueta2=tk.Label(ventana2,text="Los elefantes o elefántidos son una familia de mamíferos placentarios")
-    etiqueta2.pack()
+    etiqueta2=tk.Label(frame,text="Los elefantes o elefántidos son una familia de mamíferos placentarios." \
+    " Y son lindos",wraplength=200,justify="left")
+    etiqueta2.grid(row=0,column=1,padx=5,pady=5)
+    #etiqueta2.pack()
 
 
     boton=tk.Button(ventana2,text="ventana principal", command=lambda:destruirventana(ventana2))
@@ -126,5 +137,31 @@ def ventana_4():
     boton.pack(pady=20)
 
     ventana4.mainloop()
+
+def ventana_5():
+    ventana.destroy()
+
+    ventana5=tk.Tk()
+    ventana5.title("leom")
+    ventana5.geometry("500x500")
+    ventana5.config(bg="lightyellow")
+
+    etiqueta=tk.Label(ventana5,text="León")
+    etiqueta.pack()
+
+    imagen=Image.open("leon.jpg")
+    imagen=imagen.resize((400,200))
+    imagen_tk=ImageTk.PhotoImage(imagen)
+    label_imagen=tk.Label(ventana5,image=imagen_tk)
+    label_imagen.pack(pady=20)
+
+    etiqueta2=tk.Label(ventana5,text="mamífero carnívoro de la familia de los félidos y una de las cinco especies del género Panthera")
+    etiqueta2.pack()
+
+
+    boton=tk.Button(ventana5,text="ventana principal", command=lambda:destruirventana(ventana5))
+    boton.pack(pady=20)
+
+    ventana5.mainloop()
 
 ventanaprincipal()
