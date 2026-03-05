@@ -31,6 +31,7 @@ menu_archivo.add_command(label="pegar",command=pegar)
 barramenu.add_cascade(label="archivo", menu=menu_archivo)
 barramenu.add_cascade(label="edicion", menu=menu_archivo)
 
-ventana.confi(menu=barramenu)
+ventana.config(menu=barramenu)
+
 
 ventana.mainloop()
